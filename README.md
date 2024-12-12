@@ -17,3 +17,7 @@ The PSO implementation available in `ParticleSwarmOptimization.py` allow to deal
 - [`examples`](examples.ipynb) : notebook with 2 examples of robotic arms with and without constraints. Display of te problem and analysis of the hyperparameters.
 - [`gif/`](gif/) : a folder containing animated plot of the optimization of the robotic arm position.
 - [`hyperpars_plt/`](hyperpars_plt/) : folder containg plots to inspect number of iterations and fitness with different values of hyperparameters
+
+This work doesn't reproduce a specific paper, but some insight on problem statement and some example for testing the algoritm have been taken from:
+- Ali Murtatha Shuman, "Modeling and Control of 6-axis Robot Arm", Master of Science Thesis in Electrical Engineering
+- Serkan DERELİ, Raşit KÖKER, "IW-PSO APPROACH TO THE INVERSE KINEMATICS PROBLEM SOLUTION OF A 7-DOF SERIAL ROBOT MANIPULATOR"
