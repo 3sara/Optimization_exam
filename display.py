@@ -4,7 +4,12 @@ import numpy as np
 
 
 def DisplayNlinkarm(links, theta, alpha, target):
-    #plot arm
+    '''
+    display a plot of the n-link arm in 3D space 
+    given the links lengths, alpha and theta values and the target
+    '''
+
+    #compute the end position of each link
     trasf=np.eye(4)
     x=[0]
     y=[0]
@@ -22,8 +27,8 @@ def DisplayNlinkarm(links, theta, alpha, target):
         x.append(np.dot(trasf,[0,0,0,1])[0])
         y.append(np.dot(trasf,[0,0,0,1])[1])
         z.append(np.dot(trasf,[0,0,0,1])[2])
-
     print(f"end effector position: {x[-1],y[-1],z[-1]}")
+
     #plot in 3D space
     fig = plt.figure()
     ax = fig.add_subplot(111, projection='3d')
@@ -35,14 +40,18 @@ def DisplayNlinkarm(links, theta, alpha, target):
     plt.show()
 
 def Display_animated(links,theta, alpha, target, title, jump=1):
+    '''
+    display an animated plot of the n-link arm in 3D space
+    given the links lengths, alpha and theta values and the target
+    each frame is computed every jump iterations
+    '''
     fig = plt.figure()
-    #plot in 3D space
-    ax = fig.add_subplot(projection='3d')
-    
+    ax = fig.add_subplot(projection='3d')  
     line = ax.plot([], [], [])
-
+    #plot target
     plt.plot(target[0], target[1], target[2], 'ro')
 
+    #function to update the plot
     def animate(i, line):
         trasf=np.eye(4)
         x=[0]
