@@ -11,7 +11,7 @@ The PSO implementation available in `ParticleSwarmOptimization.py` allow to deal
 
 
 ## Files in this repository:
-- [`PSO_2d/`](PSO_2d.ipynb)  : first basical implementation in a 2 dimensional space. It isn't allowed to specify constraints.
+- [`PSO_2d`](PSO_2d.ipynb)  : first basic implementation in a 2 dimensional space. It isn't allowed to specify constraints.
 - [`ParticleSwarmOptimization`](ParticleSwarmOptimization.py) : implementation of the PSO algorithm and useful function to allow computations.
 - [`display`](display.py): implementation of method to do static and animated plot of robotic arms
 - [`examples`](examples.ipynb) : notebook with 2 examples of robotic arms with and without constraints. Display of te problem and analysis of the hyperparameters.
