@@ -145,13 +145,13 @@ def PSO(links, target, pop_size, max_iter, w, c_soc, c_cog, alpha_values=None, c
                 if fit<gbest_fit:
                     gbest=pop[i].copy()
                     gbest_fit=fit
-                #check for solution found
-                if fit<1e-3:
-                    theta_best_hist.append(gbest[0:len(links)].copy())
-                    alpha_best_hist.append(update_best_alpha())
-                    exit=np.array([1,0,0])
-                    return theta_best_hist, alpha_best_hist, fit, it, exit
-                
+                    #check for solution found
+                    if fit<1e-3:
+                        theta_best_hist.append(gbest[0:len(links)].copy())
+                        alpha_best_hist.append(update_best_alpha())
+                        exit=np.array([1,0,0])
+                        return theta_best_hist, alpha_best_hist, gbest_fit, it, exit
+                    
             #update velocity and position
             vel[i]=w*vel[i]+c_soc*np.random.rand()*(gbest-pop[i])+c_cog*np.random.random()*(pbest[i]-pop[i])
             pop[i]+=vel[i] 
@@ -164,12 +164,8 @@ def PSO(links, target, pop_size, max_iter, w, c_soc, c_cog, alpha_values=None, c
         if it>1 and np.linalg.norm(vel)<1e-3:
             stat_it+=1
             if stat_it>5:
-                end_pos=compute_end_pos(links, gbest[0:len(links)], update_best_alpha()) 
                 exit=np.array([0,0,1])
-                return theta_best_hist, alpha_best_hist, fit, it, exit
+                return theta_best_hist, alpha_best_hist, gbest_fit, it, exit
 
-        
-    end_pos=compute_end_pos(links, gbest[0:len(links)], update_best_alpha())   
-    fit=np.linalg.norm(end_pos-target)
     exit=np.array([0,1,0])
-    return theta_best_hist, alpha_best_hist, fit, it, exit
+    return theta_best_hist, alpha_best_hist, gbest_fit, it, exit
